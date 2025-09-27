@@ -124,8 +124,10 @@ function AnimatedGroup({
     [asChild]
   );
 
+  const Component = as as keyof JSX.IntrinsicElements;
+
   return (
-    <MotionComponent
+    <motion.div
       initial='hidden'
       animate='visible'
       variants={containerVariants}
@@ -136,7 +138,7 @@ function AnimatedGroup({
           {child}
         </MotionChild>
       ))}
-    </MotionComponent>
+    </motion.div>
   );
 }
 
