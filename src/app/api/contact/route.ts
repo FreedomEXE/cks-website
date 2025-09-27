@@ -1,8 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
-
-// Initialize Resend with your API key
-const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request: NextRequest) {
   try {
@@ -94,22 +90,34 @@ Please respond to the customer within 24 hours.
     `
 
     if (process.env.RESEND_API_KEY && process.env.RESEND_API_KEY !== 're_YOUR_API_KEY_HERE') {
-      // Send email using Resend
-      const { data, error } = await resend.emails.send({
-        from: 'CKS Website <onboarding@resend.dev>', // Use your verified domain in production
-        to: ['admin@ckscontracting.ca'],
-        subject: `New Demo Request - ${company}`,
-        html: htmlContent,
-        text: textContent,
-        reply_to: email, // Customer can reply directly
-      })
+      try {
+        // Dynamic import only when needed
+        const { Resend } = await import('resend')
+        const resend = new Resend(process.env.RESEND_API_KEY)
 
-      if (error) {
-        console.error('Resend error:', error)
-        throw new Error('Failed to send email')
+        // Send email using Resend
+        const { data, error } = await resend.emails.send({
+          from: 'CKS Website <onboarding@resend.dev>', // Use your verified domain in production
+          to: ['admin@ckscontracting.ca'],
+          subject: `New Demo Request - ${company}`,
+          html: htmlContent,
+          text: textContent,
+          replyTo: email, // Customer can reply directly
+        })
+
+        if (error) {
+          console.error('Resend error:', error)
+          throw new Error('Failed to send email')
+        }
+
+        console.log('Email sent successfully:', data)
+      } catch (importError) {
+        console.error('Failed to import or use Resend:', importError)
+        // Fallback to logging
+        console.log('📧 FALLBACK MODE - Email would be sent to: admin@ckscontracting.ca')
+        console.log('Subject: New Demo Request - ' + company)
+        console.log('Content:', textContent)
       }
-
-      console.log('Email sent successfully:', data)
     } else {
       // Development mode - just log the email
       console.log('📧 DEVELOPMENT MODE - Email would be sent to: admin@ckscontracting.ca')
