@@ -205,7 +205,6 @@ export default function HeroSection() {
                                 className="w-full max-w-2xl h-auto"
                                 src="/cks-logo.svg"
                                 alt="CKS Logo"
-                                style={{ imageRendering: 'crisp-edges' }}
                             />
                         </div>
                     </div>
