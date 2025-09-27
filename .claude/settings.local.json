@@ -13,7 +13,9 @@
       "Bash(yarn add:*)",
       "Bash(pnpm install:*)",
       "Bash(git reset:*)",
-      "Bash(pnpm run:*)"
+      "Bash(pnpm run:*)",
+      "Bash(curl:*)",
+      "Bash(npx kill-port:*)"
     ],
     "deny": [],
     "ask": []
