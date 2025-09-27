@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -9,6 +9,7 @@ import { TextEffect } from '@/components/ui/text-effect'
 import { AnimatedGroup } from '@/components/ui/animated-group'
 import { HeroHeader } from './header'
 import { motion } from 'motion/react'
+import { ContactForm } from './contact-form'
 
 const transitionVariants = {
     item: {
@@ -31,6 +32,8 @@ const transitionVariants = {
 }
 
 export default function HeroSection() {
+    const [isContactFormOpen, setIsContactFormOpen] = useState(false)
+
     return (
         <>
             <HeroHeader />
@@ -157,13 +160,11 @@ export default function HeroSection() {
                                     </div>
                                     <Button
                                         key={2}
-                                        asChild
                                         size="lg"
                                         variant="ghost"
-                                        className="h-10.5 rounded-xl px-5">
-                                        <Link href="#link">
-                                            <span className="text-nowrap">Request a demo</span>
-                                        </Link>
+                                        className="h-10.5 rounded-xl px-5"
+                                        onClick={() => setIsContactFormOpen(true)}>
+                                        <span className="text-nowrap">Request a demo</span>
                                     </Button>
                                 </AnimatedGroup>
                             </div>
@@ -219,6 +220,11 @@ export default function HeroSection() {
                     </div>
                 </section>
             </main>
+
+            <ContactForm
+                isOpen={isContactFormOpen}
+                onClose={() => setIsContactFormOpen(false)}
+            />
         </>
     )
 }
