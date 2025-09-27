@@ -55,7 +55,7 @@ export function ContactForm({ isOpen, onClose }: ContactFormProps) {
       } else {
         setSubmitStatus('error')
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
@@ -132,7 +132,7 @@ export function ContactForm({ isOpen, onClose }: ContactFormProps) {
                   >
                     <CheckCircle2 className="w-16 h-16 mx-auto text-green-500 mb-4" />
                     <h3 className="text-xl font-semibold mb-2">Thank you!</h3>
-                    <p className="text-muted-foreground">We'll be in touch soon.</p>
+                    <p className="text-muted-foreground">We&apos;ll be in touch soon.</p>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
