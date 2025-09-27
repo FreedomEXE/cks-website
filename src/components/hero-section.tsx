@@ -198,7 +198,7 @@ export default function HeroSection() {
                         </motion.div>
                     </div>
                 </section>
-                <section className="bg-background pb-16 pt-16 md:pb-32">
+                <section className="bg-background pb-16 pt-8 md:pb-32">
                     <div className="group relative m-auto max-w-6xl px-6">
                         <div className="absolute inset-0 z-10 flex scale-95 items-center justify-center opacity-0 duration-500 group-hover:scale-100 group-hover:opacity-100">
                             <Link
@@ -209,7 +209,7 @@ export default function HeroSection() {
                                 <ChevronRight className="ml-1 inline-block size-3" />
                             </Link>
                         </div>
-                        <div className="flex items-center justify-center mt-12 transition-all duration-500 group-hover:opacity-50">
+                        <div className="flex items-center justify-center mt-4 transition-all duration-500 group-hover:opacity-50">
                             <img
                                 className="w-full max-w-2xl h-auto"
                                 src="/cks-logo.svg"
