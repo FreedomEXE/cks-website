@@ -33,6 +33,7 @@ const transitionVariants = {
 
 export default function HeroSection() {
     const [isContactFormOpen, setIsContactFormOpen] = useState(false)
+    const [contactFormTitle, setContactFormTitle] = useState("Request a Demo")
 
     return (
         <>
@@ -150,12 +151,13 @@ export default function HeroSection() {
                                         key={1}
                                         className="bg-foreground/10 rounded-[calc(var(--radius-xl)+0.125rem)] border p-0.5">
                                         <Button
-                                            asChild
                                             size="lg"
-                                            className="rounded-xl px-5 text-base">
-                                            <Link href="#link">
-                                                <span className="text-nowrap">Get Started with CKS</span>
-                                            </Link>
+                                            className="rounded-xl px-5 text-base"
+                                            onClick={() => {
+                                                setContactFormTitle("Get Started with CKS")
+                                                setIsContactFormOpen(true)
+                                            }}>
+                                            <span className="text-nowrap">Get Started with CKS</span>
                                         </Button>
                                     </div>
                                     <Button
@@ -163,7 +165,10 @@ export default function HeroSection() {
                                         size="lg"
                                         variant="ghost"
                                         className="h-10.5 rounded-xl px-5"
-                                        onClick={() => setIsContactFormOpen(true)}>
+                                        onClick={() => {
+                                            setContactFormTitle("Request a Demo")
+                                            setIsContactFormOpen(true)
+                                        }}>
                                         <span className="text-nowrap">Request a demo</span>
                                     </Button>
                                 </AnimatedGroup>
@@ -224,6 +229,7 @@ export default function HeroSection() {
             <ContactForm
                 isOpen={isContactFormOpen}
                 onClose={() => setIsContactFormOpen(false)}
+                title={contactFormTitle}
             />
         </>
     )

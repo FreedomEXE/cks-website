@@ -12,9 +12,10 @@ import { cn } from '@/lib/utils'
 interface ContactFormProps {
   isOpen: boolean
   onClose: () => void
+  title?: string
 }
 
-export function ContactForm({ isOpen, onClose }: ContactFormProps) {
+export function ContactForm({ isOpen, onClose, title = "Request a Demo" }: ContactFormProps) {
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -112,7 +113,7 @@ export function ContactForm({ isOpen, onClose }: ContactFormProps) {
                     transition={{ delay: 0.1 }}
                     className="text-3xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text"
                   >
-                    Request a Demo
+                    {title}
                   </motion.h2>
                   <motion.p
                     initial={{ opacity: 0, y: -10 }}

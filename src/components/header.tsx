@@ -82,7 +82,7 @@ export const HeroHeader = () => {
                                 <Button
                                     asChild
                                     size="sm">
-                                    <Link href="https://portal.ckscontracting.com">
+                                    <Link href="https://portal.ckscontracting.ca">
                                         <span>Portal</span>
                                     </Link>
                                 </Button>
